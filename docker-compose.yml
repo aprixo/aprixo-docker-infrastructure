@@ -1,0 +1,24 @@
+apstackmysql:
+  image: mysql:latest
+  volumes:
+    - /srv/docker/webstack/mysql:/var/lib/mysql
+  restart: "always"
+apstackmongo:
+  image: mongo:latest
+  volumes:
+    - /srv/docker/webstack/mongo:/var/lib/mysql
+  restart: "always"
+apstackphpfpm:
+  build: phpstack
+  links:
+    - apstackmysql
+    - apstackmongo
+
+  restart: "always"
+  ports:
+    - "9007:9000"
+  volumes:
+    - /srv/docker/webstack/www:/var/www
+    - /home:/home
+    - /srv/www/vhost:/srv/www/vhost
+
