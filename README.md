@@ -1,7 +1,7 @@
 # aprixo-docker-infrastructure
-The aprixo-docker infrastructure delivers a deploy- and development environment to build and / or use aprixo on a docker host. It contains a full webstack with nginx, php, mysql, mongodb, memcached and elasticsearch using host volumes to store data.
 
-This infrastructure is used as base setup.
+This project deploays a full webstack with nginx, php, mysql, mongodb, memcached and elasticsearch using host volumes to store data. We provide this as a development environment for local development.
 
-Be aware to set the passwords to your own values.
+Also you can use this as a full PHP Webstack for other projects.
 
+See https://github.com/aprixo/aprixo-os for more details on aprixo.
