@@ -27,10 +27,21 @@ apstack-php-fpm:
     - apstack-elastic
 
   restart: "always"
-  ports:
-    - "9007:9000"
   volumes:
 #    - /srv/docker/webstack/www:/var/www
     - /home:/home
     - /srv/www/vhost:/srv/www/vhost
 
+apstack-nginx:
+   image: nginx:latest
+   restart: "always"
+   volumes:
+#    - /srv/docker/webstack/www:/var/www
+    - /home:/home
+    - /srv/www/vhost:/srv/www/vhost
+   links:
+     - apstack-php-fpm
+
+   ports:
+    - "80:80"
+    - "443:443"
