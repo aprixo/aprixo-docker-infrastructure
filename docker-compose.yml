@@ -9,7 +9,7 @@ apstack-mysql:
     - MYSQL_DATABASE=aprixo
   restart: "always"
   expose:
-    - "3307"
+    - 3307
 apstack-mongo:
   image: mongo:latest
   volumes:
@@ -21,8 +21,8 @@ apstack-elastic:
     -  /srv/docker/webstack/elasticsearch/data:/usr/share/elasticsearch/data
     restart: "always"
     expose:
-    - "9200"
-    - "9300"
+    - 9200
+    - 9300
 apstack-php-fpm:
   build: phpstack
   links:
@@ -30,7 +30,7 @@ apstack-php-fpm:
     - apstack-mongo
     - apstack-elastic
   expose:
-    - "9000"
+    - 9000
   restart: "always"
   volumes:
 #    - /srv/docker/webstack/www:/var/www
@@ -47,7 +47,6 @@ apstack-nginx:
     - /srv/www/conf/nginx:/etc/nginx
    links:
      - apstack-php-fpm
-
    ports:
     - "80:80"
     - "443:443"
