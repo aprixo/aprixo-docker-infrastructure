@@ -39,6 +39,7 @@ apstack-nginx:
 #    - /srv/docker/webstack/www:/var/www
     - /home:/home
     - /srv/www/vhost:/srv/www/vhost
+    - /srv/www/conf/nginx:/etc/nginx
    links:
      - apstack-php-fpm
 
