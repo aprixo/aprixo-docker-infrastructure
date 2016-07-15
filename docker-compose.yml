@@ -23,12 +23,21 @@ apstack-elastic:
     expose:
     - 9200
     - 9300
+
+apstack-memcached:
+    image: memcached:latest
+    restart: "always"
+    expose:
+    - 11211
+
+
 apstack-php-fpm:
   build: phpstack
   links:
     - apstack-mysql
     - apstack-mongo
     - apstack-elastic
+    - apstack-memcached
   expose:
     - 9000
   restart: "always"
@@ -36,6 +45,7 @@ apstack-php-fpm:
 #    - /srv/docker/webstack/www:/var/www
     - /home:/home
     - /srv/www/vhost:/srv/www/vhost
+    - /srv/docker/webstack/conf/php/:/usr/local/etc/
 
 apstack-nginx:
    image: nginx:latest
@@ -44,7 +54,7 @@ apstack-nginx:
 #    - /srv/docker/webstack/www:/var/www
     - /home:/home
     - /srv/www/vhost:/srv/www/vhost
-    - /srv/www/conf/nginx:/etc/nginx
+    - /srv/docker/webstack/conf/nginx:/etc/nginx
    links:
      - apstack-php-fpm
    ports:
