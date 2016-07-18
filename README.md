@@ -6,6 +6,15 @@ Also you can use this as a full PHP Webstack for other projects.
 
 See https://github.com/aprixo/aprixo-os for more details on aprixo.
 
+The stack is using the official images form the following projects:
+
+nginx
+mongodb
+memcached
+mysql
+php
+
+php has a tailored build with a huge set of (use(able|d)) extensions and its own dockerfile.
 
 ## getting started Local Development
 
@@ -29,3 +38,7 @@ adjust the aprixo.conf in the conf/nginx/sites-available directory to your local
 add a symlink from sites-enabled/aprixo.conf to sites-available/aprixo.conf
 
 Boot your docker stack.
+
+## getting started as server
+
+TODO: live server steps...
