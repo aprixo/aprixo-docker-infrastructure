@@ -10,11 +10,22 @@ apstack-mysql:
   restart: "always"
   expose:
     - 3307
+    - 3306
+  ports:
+#    - "3307:3307"
+#    - "3306:3306"
+
 apstack-mongo:
   image: mongo:latest
   volumes:
     - /srv/docker/webstack/mongo:/var/lib/mongo
   restart: "always"
+  expose:
+  - 27017
+  - 27018
+  - 27019
+  - 28017
+
 apstack-elastic:
     image: elasticsearch:latest
     volumes:
