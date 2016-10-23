@@ -11,10 +11,11 @@ apstack-mysql:
   expose:
     - 3307
     - 3306
-  ports: # If you do not need external access to the database, you should concider not to expose the database ports outside the stack
-    - "127.0.0.1:3307:3307"
-    - "127.0.0.1:3306:3306"
-l
+
+  ports:
+    - "3307:3307"
+    - "3306:3306"
+
 apstack-mongo:
   image: mongo:latest
   volumes:
@@ -62,7 +63,6 @@ apstack-nginx:
    image: nginx:latest
    restart: "always"
    volumes:
-#    - /srv/docker/webstack/www:/var/www         # default for nginx
     - /home:/home                                # this is used, if you want to use a home directory for development
     - /srv/www/vhost:/srv/www/vhost              # Defult Webhost structure (I prefer this)
     - /srv/docker/webstack/conf/nginx:/etc/nginx # nginx configuration (default)
