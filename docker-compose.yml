@@ -11,10 +11,10 @@ apstack-mysql:
   expose:
     - 3307
     - 3306
-
-  ports:
-    - "3307:3307"
-    - "3306:3306"
+  # disabled as default for public access
+  #ports:
+  #  - "3307:3307"
+  #  - "3306:3306"
 
 apstack-mongo:
   image: mongo:latest
