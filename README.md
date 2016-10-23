@@ -18,11 +18,10 @@ php has a tailored build with a huge set of (use(able|d)) extensions and its own
 
 ## getting started Local Development
 
-To start with this environment, you need some preparations.
+To start with this environment, you need some preparations. We like to have multiple external tools for easier service management. So you can add
 
-Add 
 ```
-127.0.0.1   *.localhost 
+127.0.0.1   aprixo.localhost 
 ```
 
 to your /etc/hosts file. (Asuming you develop with an unix like system / on linux)
