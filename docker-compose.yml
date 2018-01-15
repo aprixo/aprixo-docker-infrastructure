@@ -42,10 +42,10 @@ apstack-php-fpm:
   restart: "always"
   volumes:
 #    - /srv/docker/webstack/www:/var/www             # nginx default webroot directory
-    - /Users/chk/projects/craft3:/Users/chk/projects/craft3                # this is used, if you want to use a home directory for development
-    - /Users/chk/projects/airplus:/Users/chk/projects/airplus                # this is used, if you want to use a home directory for development
+    - /Users/chk/projects:/Users/chk/projects                # this is used, if you want to use a home directory for development
+    
     #- /Users/chk/projects:/srv/www/vhost              # Defult Webhost structure (I prefer this)
-    - /Users/chk/projects/apstack/conf/php:/usr/local/etc  # nginx configuration (default)
+    - /Users/chk/docker/apstack/conf/php:/usr/local/etc  # nginx configuration (default)
 
 apstack-nginx:
    image: nginx:latest
@@ -54,7 +54,7 @@ apstack-nginx:
     - /Users/chk/projects/craft3:/Users/chk/projects/craft3                # this is used, if you want to use a home directory for development
     - /Users/chk/projects/airplus:/Users/chk/projects/airplus                # this is used, if you want to use a home directory for development
     #- /Users/chk/projects:/srv/www/vhost              # Defult Webhost structure (I prefer this)
-    - /Users/chk/projects/apstack/conf/nginx:/etc/nginx  # nginx configuration (default)
+    - /Users/chk/docker/apstack/conf/nginx:/etc/nginx  # nginx configuration (default)
    links:
      - apstack-php-fpm
    ports:
