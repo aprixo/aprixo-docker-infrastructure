@@ -1,7 +1,8 @@
 apstack-mysql:
-  image: mysql:latest
+  image: mysql:5.6
   volumes:
     - /Users/chk/docker/webstack/mysql:/var/lib/mysql
+    - /Users/chk/docker/apstack/conf/mysql:/etc/mysql
   environment:
     - MYSQL_ROOT_PASSWORD=MyMysql2RootPassword
     - MYSQL_USER=craft3
@@ -43,16 +44,16 @@ apstack-php-fpm:
   volumes:
 #    - /srv/docker/webstack/www:/var/www             # nginx default webroot directory
     - /Users/chk/projects:/Users/chk/projects                # this is used, if you want to use a home directory for development
-    
+
     #- /Users/chk/projects:/srv/www/vhost              # Defult Webhost structure (I prefer this)
     - /Users/chk/docker/apstack/conf/php:/usr/local/etc  # nginx configuration (default)
+    - /Users/chk/docker/tmp:/tmp # debug Trace?
 
 apstack-nginx:
    image: nginx:latest
    restart: "always"
    volumes:
-    - /Users/chk/projects/craft3:/Users/chk/projects/craft3                # this is used, if you want to use a home directory for development
-    - /Users/chk/projects/airplus:/Users/chk/projects/airplus                # this is used, if you want to use a home directory for development
+    - /Users/chk/projects/:/Users/chk/projects/                # this is used, if you want to use a home directory for development
     #- /Users/chk/projects:/srv/www/vhost              # Defult Webhost structure (I prefer this)
     - /Users/chk/docker/apstack/conf/nginx:/etc/nginx  # nginx configuration (default)
    links:
